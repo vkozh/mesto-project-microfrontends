@@ -35,8 +35,8 @@ class Auth {
     return this._fetch("/signout", "POST", {}, {});
   }
 
-  getUser() {
-    return this._fetch("/users/me", "GET", {});
+  getUser() { //jwt
+    return this._fetch("/users/me", "GET", {}); //Authorization: `Bearer ${jwt}` });
   }
 }
 

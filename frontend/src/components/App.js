@@ -130,7 +130,8 @@ function App() {
   const handleLogin = (password, email) => {
     return auth
       .login(password, email)
-      .then(() => {
+      .then((data) => {
+        // localStorage.setItem("jwt", data.token);
         tokenCheck();
       })
       .catch((err) => {
@@ -141,6 +142,7 @@ function App() {
   };
 
   const handleLogout = () => {
+    // localStorage.removeItem("jwt");
     setLoggedIn(false);
     return auth
       .logout()
@@ -152,8 +154,10 @@ function App() {
   };
 
   const tokenCheck = () => {
+    // const jwt = localStorage.getItem("jwt");
+    // if (jwt)
     auth
-      .getUser()
+      .getUser() //jwt
       .then((data) => {
         if (data) {
           setEmail(data.email);

@@ -1,6 +1,8 @@
 {
+  "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vkozh.github.io/mesto-react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -18,7 +20,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy localy": "gh-pages -d build",
-    "deploy": "scp -r ./build/* lekozhe@51.250.100.135:/home/lekozhe/frontend"
+    "deploy": "predeploy && scp -r ./build/* lekozhe@51.250.100.135:frontend"
   },
   "eslintConfig": {
     "extends": [

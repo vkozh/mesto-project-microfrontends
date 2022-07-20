@@ -14,7 +14,7 @@ export default function EditProfilePopup({
   const [isValidForm, setIsValidForm] = useState(false);
   const [inputValid, setInputValid] = useState({});
   function handleInputValid(val) {
-    setInputValid({ ...val });
+    setInputValid({ ...val }); //any of the values
   }
   const handleChange = (name, value) => setUser({ ...user, [name]: value });
   const handleSubmit = (e) => {
