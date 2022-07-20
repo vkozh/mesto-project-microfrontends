@@ -1,0 +1,12 @@
+.enter__input-error {
+    margin: 5px 0 30px;
+    width: 100%;
+    min-height: 30px;
+    display: inline-block;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #ff7171;
+}

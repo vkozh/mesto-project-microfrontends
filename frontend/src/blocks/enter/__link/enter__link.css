@@ -1,0 +1,8 @@
+.enter__link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.enter__link:hover, .enter__link:active {
+    opacity: .6;
+}

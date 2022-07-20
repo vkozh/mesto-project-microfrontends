@@ -1,0 +1,22 @@
+.enter__input {
+    padding: 5px;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #ccc;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.2;
+    background-color: #000;
+    color: #ccc;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .enter__input:last-of-type {
+        margin: 0 0 45px;
+    }
+}

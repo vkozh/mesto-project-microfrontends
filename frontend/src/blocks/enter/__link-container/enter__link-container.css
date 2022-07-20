@@ -1,0 +1,12 @@
+.enter__link-container {
+    display: block;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    min-height: 14px;
+}

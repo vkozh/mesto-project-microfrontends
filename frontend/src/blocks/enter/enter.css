@@ -1,0 +1,14 @@
+.enter {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 358px;
+    flex-grow: 1;
+    max-height: 460px;
+}
+
+@media screen and (max-width: 768px) {
+    .enter {
+        max-height: 400px;
+    }
+}
