@@ -14,13 +14,17 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy localy": "gh-pages -d build",
-    "deploy": "predeploy && scp -r ./build/* lekozhe@51.250.100.135:frontend"
+    "deploy": "predeploy && scp -r ./build/* lekozhe@51.250.100.135:frontend",
+
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "build:start": "cd dist && PORT=8080 npx serve",
+    "start": "webpack serve --mode development",
+    "start:live": "webpack serve --mode development --live-reload --hot"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +45,23 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.9",
+    "autoprefixer": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^7.1.2",
+    "dotenv": "^16.0.2",
+    "html-webpack-plugin": "^5.6.3",
+    "svg-url-loader": "^8.0.0",
+    "wait-port": "^1.1.0",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.3.1",
+    "dotenv-webpack": "^8.0.1"
   }
 }

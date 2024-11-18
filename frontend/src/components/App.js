@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Switch } from "react-router-dom";
 import Footer from "./Footer";
-import Header from "./Header";
+import { Header, Register, Login } from "./Lazy";
 import Main from "./Main";
 import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -10,8 +10,6 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
-import Login from "./Login";
-import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
 import auth from "../utils/auth";
 import { useHistory } from "react-router-dom";
@@ -131,7 +129,7 @@ function App() {
     return auth
       .login(password, email)
       .then((data) => {
-        // localStorage.setItem("jwt", data.token);
+        localStorage.setItem("jwt", data.token);
         tokenCheck();
       })
       .catch((err) => {
@@ -142,7 +140,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    // localStorage.removeItem("jwt");
+    localStorage.removeItem("jwt");
     setLoggedIn(false);
     return auth
       .logout()
@@ -154,19 +152,20 @@ function App() {
   };
 
   const tokenCheck = () => {
-    // const jwt = localStorage.getItem("jwt");
-    // if (jwt)
-    auth
-      .getUser() //jwt
-      .then((data) => {
-        if (data) {
-          setEmail(data.email);
-          setLoggedIn(true);
-          history.push("/");
-        }
-        else setLoggedIn(false);
-      })
-      .catch((err) => console.log(ERRORS_CHECK[err.code] || err.message));
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      auth
+        .getUser(jwt)
+        .then((data) => {
+          if (data) {
+            setEmail(data.email);
+            setLoggedIn(true);
+            history.push("/");
+          }
+          else setLoggedIn(false);
+        })
+        .catch((err) => console.log(ERRORS_CHECK[err.code] || err.message));
+    };
   };
 
   const setPageData = () => {
@@ -201,13 +200,19 @@ function App() {
       <div className="container">
         <Switch>
           <Route path="/signup">
-            <Register register={handleRegister} loggedIn={loggedIn} />
+            <Suspense>
+              <Register register={handleRegister} loggedIn={loggedIn} Header={Header} />
+            </Suspense>
           </Route>
           <Route path="/signin">
-            <Login login={handleLogin} loggedIn={loggedIn} />
+            <Suspense>
+              <Login login={handleLogin} loggedIn={loggedIn} Header={Header} />
+            </Suspense>
           </Route>
           <ProtectedRoute loggedIn={loggedIn} exact>
-            <Header loggedIn={loggedIn} email={email} logout={handleLogout} />
+            <Suspense fallback={() =>'kek'}>
+              <Header loggedIn={loggedIn} email={email} logout={handleLogout} />
+            </Suspense>
             <Main
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}

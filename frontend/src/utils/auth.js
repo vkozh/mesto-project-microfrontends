@@ -35,12 +35,12 @@ class Auth {
     return this._fetch("/signout", "POST", {}, {});
   }
 
-  getUser() { //jwt
-    return this._fetch("/users/me", "GET", {}); //Authorization: `Bearer ${jwt}` });
+  getUser(jwt) {
+    return this._fetch("/users/me", "GET", { Authorization: `Bearer ${jwt}` });
   }
 }
 
 const auth = new Auth({
-  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`,
+  baseUrl: `//localhost:3001`,
 });
 export default auth;

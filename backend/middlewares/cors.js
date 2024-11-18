@@ -1,6 +1,6 @@
 const allowedCors = [
   'https://lekozhe-mesto.nomoredomains.xyz',
-  'http://localhost:3000',
+  'http://localhost:8080',
   'http://lekozhe-mesto.nomoredomains.xyz',
   'https://express-mesto-gha.github.io',
 ];
